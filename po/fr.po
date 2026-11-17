@@ -1,0 +1,168 @@
+# French translation for Spotify Dock Controller.
+# This file is distributed under the same license as the Spotify Dock Controller package.
+# Lucas Sarazin, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Spotify Dock Controller\n"
+"Report-Msgid-Bugs-To: https://github.com/lucassrz/spotify-dock-controller/"
+"issues\n"
+"POT-Creation-Date: 2026-11-17 11:26+0100\n"
+"PO-Revision-Date: 2026-11-17 11:30+0100\n"
+"Last-Translator: Lucas Sarazin\n"
+"Language-Team: French\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: prefs.js:12
+msgid "Bottom, left of the dock"
+msgstr "En bas, à gauche du dock"
+
+#: prefs.js:13
+msgid "Bottom, right of the dock"
+msgstr "En bas, à droite du dock"
+
+#: prefs.js:14
+msgid "Top bar — left"
+msgstr "Barre du haut — gauche"
+
+#: prefs.js:15
+msgid "Top bar — center"
+msgstr "Barre du haut — centre"
+
+#: prefs.js:16
+msgid "Top bar — right"
+msgstr "Barre du haut — droite"
+
+#: prefs.js:41
+msgid "Settings"
+msgstr "Réglages"
+
+#: prefs.js:48
+msgid "Placement"
+msgstr "Placement"
+
+#: prefs.js:49
+msgid "Applied immediately, without restarting the session."
+msgstr "Appliqué immédiatement, sans relancer la session."
+
+#: prefs.js:54
+msgid "Location"
+msgstr "Emplacement"
+
+#: prefs.js:70
+msgid "Position in the top bar area"
+msgstr "Position dans la zone"
+
+#: prefs.js:71
+msgid "Index inside the top bar box (0 = first)"
+msgstr "Index dans la zone de la barre du haut (0 = premier)"
+
+#: prefs.js:74
+msgid "Horizontal offset from the dock"
+msgstr "Décalage par rapport au dock"
+
+#: prefs.js:75
+msgid ""
+"In pixels (if the dock is not found: from the bottom center of the screen)"
+msgstr "En pixels (si le dock est introuvable : par rapport au centre-bas de l'écran)"
+
+#: prefs.js:79
+msgid "Hide in the Activities overview"
+msgstr "Masquer en vue d'ensemble"
+
+#: prefs.js:79
+msgid "Dock locations only"
+msgstr "Mode « à côté du dock » uniquement"
+
+#: prefs.js:99
+msgid "Display"
+msgstr "Affichage"
+
+#: prefs.js:101
+msgid "Show “Title — Artist”"
+msgstr "Afficher « Titre — Artiste »"
+
+#: prefs.js:102
+msgid "Maximum text length"
+msgstr "Longueur maximale du texte"
+
+#: prefs.js:103
+msgid "In characters, truncated with “…”"
+msgstr "En caractères, tronqué avec « … »"
+
+#: prefs.js:106
+msgid "Mini album art in the indicator"
+msgstr "Mini-pochette dans l'indicateur"
+
+#: prefs.js:107
+msgid "Replaces the icon once the album art is available"
+msgstr "Remplace l'icône quand la pochette est disponible"
+
+#: prefs.js:108
+msgid "Hide when Spotify is closed"
+msgstr "Masquer quand Spotify est fermé"
+
+#: prefs.js:109
+msgid "Otherwise the indicator stays visible, greyed out"
+msgstr "Sinon, l'indicateur reste visible en grisé"
+
+#: prefs.js:112
+msgid "Interaction"
+msgstr "Interaction"
+
+#: prefs.js:114
+msgid "Middle click = play/pause"
+msgstr "Clic milieu = lecture/pause"
+
+#: prefs.js:117
+msgid "Advanced"
+msgstr "Avancé"
+
+#: prefs.js:119
+msgid "Placement logs"
+msgstr "Journaux de placement"
+
+#. TRANSLATORS: keep the command unchanged
+#: prefs.js:121
+msgid "Shown with: journalctl --user -f -o cat /usr/bin/gnome-shell"
+msgstr "Visible avec : journalctl --user -f -o cat /usr/bin/gnome-shell"
+
+#: indicator.js:208
+msgid "Progress"
+msgstr "Progression"
+
+#: indicator.js:238
+msgid "Shuffle"
+msgstr "Aléatoire"
+
+#: indicator.js:239
+msgid "Previous"
+msgstr "Précédent"
+
+#: indicator.js:240
+msgid "Play/Pause"
+msgstr "Lecture/Pause"
+
+#: indicator.js:241
+msgid "Next"
+msgstr "Suivant"
+
+#: indicator.js:242
+msgid "Repeat"
+msgstr "Répéter"
+
+#: indicator.js:253
+msgid "Spotify is not running"
+msgstr "Spotify n'est pas lancé"
+
+#: indicator.js:262
+msgid "Show Spotify"
+msgstr "Afficher Spotify"
+
+#: indicator.js:263
+msgid "Launch Spotify"
+msgstr "Lancer Spotify"

@@ -1,0 +1,169 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Spotify Dock Controller package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Spotify Dock Controller\n"
+"Report-Msgid-Bugs-To: https://github.com/lucassrz/spotify-dock-controller/"
+"issues\n"
+"POT-Creation-Date: 2026-11-17 11:26+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: prefs.js:12
+msgid "Bottom, left of the dock"
+msgstr ""
+
+#: prefs.js:13
+msgid "Bottom, right of the dock"
+msgstr ""
+
+#: prefs.js:14
+msgid "Top bar — left"
+msgstr ""
+
+#: prefs.js:15
+msgid "Top bar — center"
+msgstr ""
+
+#: prefs.js:16
+msgid "Top bar — right"
+msgstr ""
+
+#: prefs.js:41
+msgid "Settings"
+msgstr ""
+
+#: prefs.js:48
+msgid "Placement"
+msgstr ""
+
+#: prefs.js:49
+msgid "Applied immediately, without restarting the session."
+msgstr ""
+
+#: prefs.js:54
+msgid "Location"
+msgstr ""
+
+#: prefs.js:70
+msgid "Position in the top bar area"
+msgstr ""
+
+#: prefs.js:71
+msgid "Index inside the top bar box (0 = first)"
+msgstr ""
+
+#: prefs.js:74
+msgid "Horizontal offset from the dock"
+msgstr ""
+
+#: prefs.js:75
+msgid ""
+"In pixels (if the dock is not found: from the bottom center of the screen)"
+msgstr ""
+
+#: prefs.js:79
+msgid "Hide in the Activities overview"
+msgstr ""
+
+#: prefs.js:79
+msgid "Dock locations only"
+msgstr ""
+
+#: prefs.js:99
+msgid "Display"
+msgstr ""
+
+#: prefs.js:101
+msgid "Show “Title — Artist”"
+msgstr ""
+
+#: prefs.js:102
+msgid "Maximum text length"
+msgstr ""
+
+#: prefs.js:103
+msgid "In characters, truncated with “…”"
+msgstr ""
+
+#: prefs.js:106
+msgid "Mini album art in the indicator"
+msgstr ""
+
+#: prefs.js:107
+msgid "Replaces the icon once the album art is available"
+msgstr ""
+
+#: prefs.js:108
+msgid "Hide when Spotify is closed"
+msgstr ""
+
+#: prefs.js:109
+msgid "Otherwise the indicator stays visible, greyed out"
+msgstr ""
+
+#: prefs.js:112
+msgid "Interaction"
+msgstr ""
+
+#: prefs.js:114
+msgid "Middle click = play/pause"
+msgstr ""
+
+#: prefs.js:117
+msgid "Advanced"
+msgstr ""
+
+#: prefs.js:119
+msgid "Placement logs"
+msgstr ""
+
+#. TRANSLATORS: keep the command unchanged
+#: prefs.js:121
+msgid "Shown with: journalctl --user -f -o cat /usr/bin/gnome-shell"
+msgstr ""
+
+#: indicator.js:208
+msgid "Progress"
+msgstr ""
+
+#: indicator.js:238
+msgid "Shuffle"
+msgstr ""
+
+#: indicator.js:239
+msgid "Previous"
+msgstr ""
+
+#: indicator.js:240
+msgid "Play/Pause"
+msgstr ""
+
+#: indicator.js:241
+msgid "Next"
+msgstr ""
+
+#: indicator.js:242
+msgid "Repeat"
+msgstr ""
+
+#: indicator.js:253
+msgid "Spotify is not running"
+msgstr ""
+
+#: indicator.js:262
+msgid "Show Spotify"
+msgstr ""
+
+#: indicator.js:263
+msgid "Launch Spotify"
+msgstr ""

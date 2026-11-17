@@ -4,6 +4,8 @@
 # keyfile (aucune écriture dans le dconf réel), faux Spotify MPRIS, pochette
 # servie en local. N'affecte pas la session en cours.
 #   ./tests/run-headless.sh            -> résultats [PASS]/[FAIL] + captures
+#   LANGUAGE=fr ./tests/run-headless.sh -> idem, interface en français
+#   (LANG/LANGUAGE sont transmis tels quels au gnome-shell headless)
 set -u
 N="$(cd "$(dirname "$0")" && pwd)"
 SRC="$(dirname "$N")"
@@ -14,6 +16,16 @@ chmod 700 "$T/run"
 mkdir "$T/data/gnome-shell/extensions/$UUID"
 cp -r "$SRC"/{metadata.json,*.js,stylesheet.css,icons,schemas} "$T/data/gnome-shell/extensions/$UUID/"
 glib-compile-schemas "$T/data/gnome-shell/extensions/$UUID/schemas"
+# Traductions : po/*.po -> locale/<lang>/LC_MESSAGES/<domaine>.mo (comme
+# gnome-extensions pack --podir). Repli Flatpak si gettext n'est pas installé ;
+# à faire avant de rediriger HOME/XDG_* (flatpak en dépend).
+command -v msgfmt >/dev/null || PATH="$SRC/tools/gettext-bin:$PATH"
+DOMAIN=$(sed -n 's/.*"gettext-domain": *"\([^"]*\)".*/\1/p' "$SRC/metadata.json")
+for po in "$SRC"/po/*.po; do
+    lang=$(basename "$po" .po)
+    mkdir -p "$T/data/gnome-shell/extensions/$UUID/locale/$lang/LC_MESSAGES"
+    msgfmt -o "$T/data/gnome-shell/extensions/$UUID/locale/$lang/LC_MESSAGES/$DOMAIN.mo" "$po"
+done
 cp /usr/share/spotify/icons/spotify-linux-256.png "$T/www/cover.img" 2>/dev/null ||
     cp "$SRC/icons/spotify-symbolic.svg" "$T/www/cover.img"
 cat > "$T/config/glib-2.0/settings/keyfile" <<KF

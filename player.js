@@ -140,7 +140,7 @@ export class SpotifyPlayer extends EventEmitter {
             this.refreshPosition();
         } catch (e) {
             if (!e.matches?.(Gio.IOErrorEnum, Gio.IOErrorEnum.CANCELLED))
-                console.warn(`[spotify-dock-controller] proxy MPRIS: ${e.message}`);
+                console.warn(`[spotify-dock-controller] MPRIS proxy: ${e.message}`);
         }
     }
 

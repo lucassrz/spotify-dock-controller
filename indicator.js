@@ -10,6 +10,7 @@ import GObject from 'gi://GObject';
 import Pango from 'gi://Pango';
 import St from 'gi://St';
 
+import {gettext as _} from 'resource:///org/gnome/shell/extensions/extension.js';
 import * as PanelMenu from 'resource:///org/gnome/shell/ui/panelMenu.js';
 import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
 import * as Slider from 'resource:///org/gnome/shell/ui/slider.js';
@@ -204,7 +205,7 @@ export const SpotifyIndicator = GObject.registerClass({
 
         this._slider = new Slider.Slider(0);
         this._slider.add_style_class_name('sdc-progress');
-        this._slider.accessible_name = 'Progression';
+        this._slider.accessible_name = _('Progress');
         this._slider.connectObject(
             'drag-begin', () => {
                 this._dragging = true;
@@ -234,11 +235,11 @@ export const SpotifyIndicator = GObject.registerClass({
         vbox.add_child(timeBox);
 
         const controls = new St.BoxLayout({style_class: 'sdc-controls', x_align: Clutter.ActorAlign.CENTER});
-        this._shuffleBtn = controlButton('media-playlist-shuffle-symbolic', 'Aléatoire', 'sdc-control-button sdc-toggle');
-        this._prevBtn = controlButton('media-skip-backward-symbolic', 'Précédent');
-        this._playBtn = controlButton('media-playback-start-symbolic', 'Lecture/Pause', 'sdc-control-button sdc-play');
-        this._nextBtn = controlButton('media-skip-forward-symbolic', 'Suivant');
-        this._repeatBtn = controlButton('media-playlist-repeat-symbolic', 'Répéter', 'sdc-control-button sdc-toggle');
+        this._shuffleBtn = controlButton('media-playlist-shuffle-symbolic', _('Shuffle'), 'sdc-control-button sdc-toggle');
+        this._prevBtn = controlButton('media-skip-backward-symbolic', _('Previous'));
+        this._playBtn = controlButton('media-playback-start-symbolic', _('Play/Pause'), 'sdc-control-button sdc-play');
+        this._nextBtn = controlButton('media-skip-forward-symbolic', _('Next'));
+        this._repeatBtn = controlButton('media-playlist-repeat-symbolic', _('Repeat'), 'sdc-control-button sdc-toggle');
         this._shuffleBtn.connect('clicked', () => this._player.toggleShuffle());
         this._prevBtn.connect('clicked', () => this._player.previous());
         this._playBtn.connect('clicked', () => this._player.playPause());
@@ -249,7 +250,7 @@ export const SpotifyIndicator = GObject.registerClass({
         vbox.add_child(controls);
 
         this._notRunningLabel = new St.Label({
-            text: 'Spotify n\'est pas lancé',
+            text: _('Spotify is not running'),
             style_class: 'sdc-not-running',
             x_align: Clutter.ActorAlign.CENTER,
             opacity: 170,
@@ -258,8 +259,8 @@ export const SpotifyIndicator = GObject.registerClass({
 
         this.menu.addMenuItem(item);
         this.menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
-        this._raiseItem = this.menu.addAction('Afficher Spotify', () => this._player.raise());
-        this._launchItem = this.menu.addAction('Lancer Spotify', () => this._launchSpotify());
+        this._raiseItem = this.menu.addAction(_('Show Spotify'), () => this._player.raise());
+        this._launchItem = this.menu.addAction(_('Launch Spotify'), () => this._launchSpotify());
     }
 
     _launchSpotify() {
@@ -271,7 +272,7 @@ export const SpotifyIndicator = GObject.registerClass({
             else
                 GLib.spawn_command_line_async('spotify');
         } catch (e) {
-            console.warn(`[spotify-dock-controller] lancement Spotify: ${e.message}`);
+            console.warn(`[spotify-dock-controller] launching Spotify: ${e.message}`);
         }
     }
 

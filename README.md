@@ -13,6 +13,8 @@ You can put the indicator in the **top bar** (left, center or right) or **next t
 
 ## Screenshots
 
+The screenshots were taken with the French interface.
+
 **Next to the dock** (`placement = dock-right`)
 
 ![Spotify Dock Controller next to the Ubuntu Dock](docs/screenshots/dock.png)
@@ -51,7 +53,6 @@ To see the logs, run `journalctl --user -f -o cat /usr/bin/gnome-shell`. Turn on
 
 Open the preferences with `gnome-extensions prefs spotify-dock-controller@lsarazin`, or from the
 Extensions app. Every change applies immediately, without restarting the shell.
-The preferences window is currently in French; this table gives the English meaning of each option.
 
 | Group | Option | Values | Default | What it does |
 |---|---|---|---|---|
@@ -73,6 +74,29 @@ gsettings --schemadir ~/.local/share/gnome-shell/extensions/spotify-dock-control
   set org.gnome.shell.extensions.spotify-dock-controller placement 'panel-center'
 ```
 
+## Translations
+
+The interface is written in English and translated with gettext (domain `spotify-dock-controller`).
+Available languages: **English** (built in) and **French** (`po/fr.po`). GNOME Shell picks the
+language of your session.
+
+`make pack` / `make install` compile the `.po` files into the zip (`gnome-extensions pack --podir=po`).
+They need GNU gettext (`msgfmt`, `xgettext`, `msgmerge`, `msginit`, from the `gettext` package);
+if it is missing, the Makefile falls back to the copy shipped in an installed Flatpak runtime
+(`org.gnome.Platform` or `org.freedesktop.Platform`, see `tools/flatpak-gettext.sh`).
+
+To add a language (here German):
+
+```sh
+make pot                                   # regenerate po/spotify-dock-controller.pot from the sources
+msginit -i po/spotify-dock-controller.pot -o po/de.po -l de_DE.UTF-8 --no-translator
+# translate po/de.po, add "de" to po/LINGUAS, then:
+make check install
+```
+
+After changing strings in the code, run `make update-po` (`make pot` + `msgmerge` into every `.po`)
+and translate the new or fuzzy entries.
+
 ## How it works
 
 - **Spotify detection**: the extension watches `org.mpris.MediaPlayer2.spotify` with `Gio.bus_watch_name` (NameOwnerChanged).
@@ -87,11 +111,12 @@ gsettings --schemadir ~/.local/share/gnome-shell/extensions/spotify-dock-control
 
 ## Tests
 
-- `make check` validates the schema with `--strict` and checks the JS syntax.
+- `make check` validates the schema with `--strict`, checks the JS syntax and runs `msgfmt --check` on the translations.
 - `tests/run-headless.sh` starts a fully isolated `gnome-shell --headless`: private D-Bus, temporary XDG/HOME, keyfile GSettings. It never writes to your real session.
   - The test environment contains Ubuntu Dock, a fake Spotify MPRIS player and album art served locally.
   - It checks placement, the popup, seeking, the buttons, real clicks through a virtual pointer, the preferences, and disable/enable.
   - It then saves screenshots.
+  - It runs in the language of your environment: `LANGUAGE=fr ./tests/run-headless.sh` checks the French texts.
 
 ## Known limitations
 

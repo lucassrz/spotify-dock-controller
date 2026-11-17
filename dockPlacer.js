@@ -194,7 +194,7 @@ export class DockPlacer {
                 ? Math.round(dx - offset - natW)
                 : Math.round(dx + dw + offset);
             this._copyDockStyle();
-            this._debug(`dock trouvé (${this._dockActor.name || this._dockActor.style_class}) ` +
+            this._debug(`dock found (${this._dockActor.name || this._dockActor.style_class}) ` +
                 `x=${dx} y=${dy} w=${dw} h=${dh} -> widget x=${x} y=${y} h=${h}`);
         } else {
             // ButtonBox ignore min-height CSS : hauteur fixe raisonnable
@@ -205,7 +205,7 @@ export class DockPlacer {
             x = this._side === 'left'
                 ? Math.round(center - offset - natW)
                 : Math.round(center + offset);
-            this._debug(`dock introuvable -> fallback centre-bas x=${x} y=${y}`);
+            this._debug(`dock not found -> bottom-center fallback x=${x} y=${y}`);
         }
 
         // Rester dans le moniteur

@@ -2,14 +2,18 @@ import Adw from 'gi://Adw';
 import Gio from 'gi://Gio';
 import Gtk from 'gi://Gtk';
 
-import {ExtensionPreferences} from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
+import {ExtensionPreferences, gettext as _} from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
+
+// Marque une chaîne pour xgettext sans la traduire : _() n'est utilisable
+// qu'une fois l'extension chargée, la traduction se fait à l'affichage.
+const N_ = s => s;
 
 const PLACEMENTS = [
-    ['dock-left', 'En bas, à gauche du dock'],
-    ['dock-right', 'En bas, à droite du dock'],
-    ['panel-left', 'Barre du haut — gauche'],
-    ['panel-center', 'Barre du haut — centre'],
-    ['panel-right', 'Barre du haut — droite'],
+    ['dock-left', N_('Bottom, left of the dock')],
+    ['dock-right', N_('Bottom, right of the dock')],
+    ['panel-left', N_('Top bar — left')],
+    ['panel-center', N_('Top bar — center')],
+    ['panel-right', N_('Top bar — right')],
 ];
 
 function switchRow(settings, key, title, subtitle = '') {
@@ -34,21 +38,21 @@ export default class SpotifyDockControllerPrefs extends ExtensionPreferences {
         window.set_default_size(560, 720);
 
         const page = new Adw.PreferencesPage({
-            title: 'Réglages',
+            title: _('Settings'),
             icon_name: 'preferences-system-symbolic',
         });
         window.add(page);
 
         // --- Placement -------------------------------------------------------
         const placementGroup = new Adw.PreferencesGroup({
-            title: 'Placement',
-            description: 'Appliqué immédiatement, sans relancer la session.',
+            title: _('Placement'),
+            description: _('Applied immediately, without restarting the session.'),
         });
         page.add(placementGroup);
 
         const placementRow = new Adw.ComboRow({
-            title: 'Emplacement',
-            model: Gtk.StringList.new(PLACEMENTS.map(([, label]) => label)),
+            title: _('Location'),
+            model: Gtk.StringList.new(PLACEMENTS.map(([, label]) => _(label))),
         });
         const syncCombo = () => {
             const idx = PLACEMENTS.findIndex(([id]) => id === settings.get_string('placement'));
@@ -63,16 +67,16 @@ export default class SpotifyDockControllerPrefs extends ExtensionPreferences {
         });
         placementGroup.add(placementRow);
 
-        const indexRow = spinRow(settings, 'panel-index', 'Position dans la zone',
-            'Index dans la zone de la barre du haut (0 = premier)', 0, 50);
+        const indexRow = spinRow(settings, 'panel-index', _('Position in the top bar area'),
+            _('Index inside the top bar box (0 = first)'), 0, 50);
         placementGroup.add(indexRow);
 
-        const offsetRow = spinRow(settings, 'dock-offset', 'Décalage par rapport au dock',
-            'En pixels (si le dock est introuvable : par rapport au centre-bas de l\'écran)', -2000, 2000);
+        const offsetRow = spinRow(settings, 'dock-offset', _('Horizontal offset from the dock'),
+            _('In pixels (if the dock is not found: from the bottom center of the screen)'), -2000, 2000);
         placementGroup.add(offsetRow);
 
         const overviewRow = switchRow(settings, 'hide-in-overview',
-            'Masquer en vue d\'ensemble', 'Mode « à côté du dock » uniquement');
+            _('Hide in the Activities overview'), _('Dock locations only'));
         placementGroup.add(overviewRow);
 
         const syncSensitivity = () => {
@@ -92,28 +96,29 @@ export default class SpotifyDockControllerPrefs extends ExtensionPreferences {
         });
 
         // --- Affichage -------------------------------------------------------
-        const displayGroup = new Adw.PreferencesGroup({title: 'Affichage'});
+        const displayGroup = new Adw.PreferencesGroup({title: _('Display')});
         page.add(displayGroup);
-        displayGroup.add(switchRow(settings, 'show-text', 'Afficher « Titre — Artiste »'));
-        const lenRow = spinRow(settings, 'max-text-length', 'Longueur maximale du texte',
-            'En caractères, tronqué avec « … »', 5, 200);
+        displayGroup.add(switchRow(settings, 'show-text', _('Show “Title — Artist”')));
+        const lenRow = spinRow(settings, 'max-text-length', _('Maximum text length'),
+            _('In characters, truncated with “…”'), 5, 200);
         settings.bind('show-text', lenRow, 'sensitive', Gio.SettingsBindFlags.GET);
         displayGroup.add(lenRow);
-        displayGroup.add(switchRow(settings, 'show-mini-art', 'Mini-pochette dans l\'indicateur',
-            'Remplace l\'icône quand la pochette est disponible'));
-        displayGroup.add(switchRow(settings, 'hide-when-closed', 'Masquer quand Spotify est fermé',
-            'Sinon, l\'indicateur reste visible en grisé'));
+        displayGroup.add(switchRow(settings, 'show-mini-art', _('Mini album art in the indicator'),
+            _('Replaces the icon once the album art is available')));
+        displayGroup.add(switchRow(settings, 'hide-when-closed', _('Hide when Spotify is closed'),
+            _('Otherwise the indicator stays visible, greyed out')));
 
         // --- Interaction ------------------------------------------------------
-        const inputGroup = new Adw.PreferencesGroup({title: 'Interaction'});
+        const inputGroup = new Adw.PreferencesGroup({title: _('Interaction')});
         page.add(inputGroup);
-        inputGroup.add(switchRow(settings, 'middle-click-play-pause', 'Clic milieu = lecture/pause'));
+        inputGroup.add(switchRow(settings, 'middle-click-play-pause', _('Middle click = play/pause')));
 
         // --- Avancé -----------------------------------------------------------
-        const advGroup = new Adw.PreferencesGroup({title: 'Avancé'});
+        const advGroup = new Adw.PreferencesGroup({title: _('Advanced')});
         page.add(advGroup);
-        advGroup.add(switchRow(settings, 'debug', 'Journaux de placement',
-            'Visible avec : journalctl --user -f -o cat /usr/bin/gnome-shell'));
+        advGroup.add(switchRow(settings, 'debug', _('Placement logs'),
+            // TRANSLATORS: keep the command unchanged
+            _('Shown with: journalctl --user -f -o cat /usr/bin/gnome-shell')));
 
         // garder une référence tant que la fenêtre vit
         window._settings = settings;

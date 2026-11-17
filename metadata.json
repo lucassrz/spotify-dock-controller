@@ -1,9 +1,10 @@
 {
   "uuid": "spotify-dock-controller@lsarazin",
   "name": "Spotify Dock Controller",
-  "description": "Contrôle Spotify (MPRIS) depuis la barre du haut ou à côté du dock : titre/artiste, pochette, progression, précédent/lecture/suivant.",
+  "description": "Control Spotify (MPRIS) from the top bar or next to the dock: title/artist, album art, progress, previous/play/next.",
   "shell-version": ["48", "49", "50"],
   "settings-schema": "org.gnome.shell.extensions.spotify-dock-controller",
+  "gettext-domain": "spotify-dock-controller",
   "url": "https://github.com/lucassrz/spotify-dock-controller",
   "version": 1
 }

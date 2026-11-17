@@ -47,6 +47,17 @@ export async function run() {
   log(`label="${ind()._label.text}" visible=${ind().container.visible}`);
   check(ind()._label.text === 'Count Me Out — Kendrick Lamar', 'texte Titre — Artiste');
 
+  // ---- traductions (LANGUAGE=fr -> français, sinon anglais)
+  { const fr = (GLib.getenv('LANGUAGE') ?? GLib.getenv('LANG') ?? '').startsWith('fr');
+    const got = [ind()._raiseItem.label.text, ind()._launchItem.label.text, ind()._notRunningLabel.text,
+      ind()._shuffleBtn.accessible_name, ind()._prevBtn.accessible_name, ind()._playBtn.accessible_name,
+      ind()._nextBtn.accessible_name, ind()._repeatBtn.accessible_name, ind()._slider.accessible_name];
+    const want = fr
+      ? ['Afficher Spotify', 'Lancer Spotify', 'Spotify n\'est pas lancé', 'Aléatoire', 'Précédent', 'Lecture/Pause', 'Suivant', 'Répéter', 'Progression']
+      : ['Show Spotify', 'Launch Spotify', 'Spotify is not running', 'Shuffle', 'Previous', 'Play/Pause', 'Next', 'Repeat', 'Progress'];
+    log(`i18n (${fr ? 'fr' : 'en'}): ${got.join(' | ')}`);
+    check(JSON.stringify(got) === JSON.stringify(want), `textes de l'indicateur en ${fr ? 'français' : 'anglais'}`); }
+
   // ---- mode dock-right
   const bg = dockBg();
   check(!!bg, 'dock ubuntu-dock trouvé (dash._background)');
