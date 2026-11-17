@@ -1,0 +1,123 @@
+/* --- Indicateur ------------------------------------------------------------ */
+
+.sdc-indicator-box {
+  spacing: 6px;
+}
+
+.sdc-indicator-label {
+  max-width: 40em;
+}
+
+.sdc-mini-art {
+  border-radius: 3px;
+}
+
+/* Widget flottant à côté du dock (hors #panel : on recrée un aspect « pilule »).
+   Couleur et arrondi sont ensuite recopiés du dock quand il est détecté. */
+.sdc-floating {
+  background-color: rgba(30, 30, 30, 0.85);
+  border-radius: 18px;
+  /* PanelMenu.ButtonBox ignore 'padding' : il utilise ces deux propriétés */
+  -natural-hpadding: 16px;
+  -minimum-hpadding: 8px;
+  color: #ffffff;
+  transition-duration: 150ms;
+}
+
+.sdc-floating:hover,
+.sdc-floating:focus,
+.sdc-floating:active,
+.sdc-floating:checked {
+  box-shadow: inset 0 0 0 100px rgba(255, 255, 255, 0.10);
+}
+
+.sdc-floating .sdc-indicator-icon {
+  icon-size: 18px;
+}
+
+/* --- Popup ------------------------------------------------------------------- */
+
+.sdc-menu .popup-menu-content {
+  min-width: 280px;
+}
+
+.sdc-player-item {
+  padding: 12px 12px 6px 12px;
+}
+
+.sdc-player-item:hover,
+.sdc-player-item:focus,
+.sdc-player-item:active {
+  background-color: transparent;
+}
+
+.sdc-player {
+  spacing: 4px;
+  width: 260px;
+}
+
+.sdc-cover {
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.sdc-title {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.sdc-artist {
+  font-size: 0.95em;
+}
+
+.sdc-album {
+  font-size: 0.85em;
+}
+
+.sdc-progress {
+  margin-top: 8px;
+}
+
+.sdc-time-box {
+  margin-top: 2px;
+}
+
+.sdc-time {
+  font-size: 0.8em;
+  font-feature-settings: "tnum";
+}
+
+.sdc-controls {
+  spacing: 8px;
+  margin-top: 6px;
+}
+
+.sdc-control-button {
+  padding: 8px;
+  border-radius: 99px;
+}
+
+.sdc-control-button:hover,
+.sdc-control-button:focus {
+  background-color: rgba(127, 127, 127, 0.20);
+}
+
+.sdc-control-button:active {
+  background-color: rgba(127, 127, 127, 0.32);
+}
+
+.sdc-control-icon {
+  icon-size: 18px;
+}
+
+.sdc-play .sdc-control-icon {
+  icon-size: 24px;
+}
+
+.sdc-toggle:checked {
+  color: #1ed760;
+}
+
+.sdc-not-running {
+  padding: 12px 0;
+}

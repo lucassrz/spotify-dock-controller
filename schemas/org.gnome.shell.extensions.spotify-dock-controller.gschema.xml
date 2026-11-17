@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.spotify-dock-controller"
+          path="/org/gnome/shell/extensions/spotify-dock-controller/">
+
+    <key name="placement" type="s">
+      <choices>
+        <choice value="panel-left"/>
+        <choice value="panel-center"/>
+        <choice value="panel-right"/>
+        <choice value="dock-left"/>
+        <choice value="dock-right"/>
+      </choices>
+      <default>'dock-right'</default>
+      <summary>Placement de l'indicateur</summary>
+      <description>Barre du haut (gauche/centre/droite) ou en bas à gauche/droite du dock.</description>
+    </key>
+
+    <key name="panel-index" type="i">
+      <range min="0" max="50"/>
+      <default>0</default>
+      <summary>Position dans la zone de la barre du haut</summary>
+    </key>
+
+    <key name="dock-offset" type="i">
+      <range min="-2000" max="2000"/>
+      <default>8</default>
+      <summary>Décalage horizontal (px) par rapport au dock</summary>
+    </key>
+
+    <key name="hide-in-overview" type="b">
+      <default>false</default>
+      <summary>Masquer le widget flottant en vue d'ensemble (mode dock)</summary>
+    </key>
+
+    <key name="show-text" type="b">
+      <default>true</default>
+      <summary>Afficher « Titre — Artiste » dans l'indicateur</summary>
+    </key>
+
+    <key name="max-text-length" type="i">
+      <range min="5" max="200"/>
+      <default>40</default>
+      <summary>Longueur maximale du texte de l'indicateur (caractères)</summary>
+    </key>
+
+    <key name="show-mini-art" type="b">
+      <default>false</default>
+      <summary>Afficher une mini-pochette dans l'indicateur</summary>
+    </key>
+
+    <key name="hide-when-closed" type="b">
+      <default>true</default>
+      <summary>Masquer l'indicateur quand Spotify n'est pas lancé (sinon : grisé)</summary>
+    </key>
+
+    <key name="middle-click-play-pause" type="b">
+      <default>true</default>
+      <summary>Clic milieu sur l'indicateur = lecture/pause</summary>
+    </key>
+
+    <key name="debug" type="b">
+      <default>false</default>
+      <summary>Journaliser les détails de placement (journalctl)</summary>
+    </key>
+  </schema>
+</schemalist>
