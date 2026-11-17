@@ -2,10 +2,11 @@
 
 A GNOME Shell extension (GNOME 48–50, tested on 50.1 / Wayland) that controls Spotify through MPRIS.
 It shows the current **title — artist** in a small indicator. Clicking the indicator opens a popup with:
-- the album art;
-- a progress bar you can click to seek;
+- the album art, title, artist and album;
+- a progress bar you can click to seek, with elapsed and total time;
 - previous / play-pause / next buttons;
-- shuffle and repeat.
+- shuffle and repeat;
+- a *Show Spotify* item that brings the Spotify window to the front.
 
 You can put the indicator in the **top bar** (left, center or right) or **next to the dock**
 (Ubuntu Dock / Dash to Dock), on its left or right side.
@@ -19,6 +20,10 @@ You can put the indicator in the **top bar** (left, center or right) or **next t
 **In the top bar** (`placement = panel-center`)
 
 ![Spotify Dock Controller in the top bar](docs/screenshots/top-bar.png)
+
+**Popup opened by clicking the indicator** (dock mode, so it opens upwards)
+
+![Spotify Dock Controller popup with album art, progress bar and playback controls](docs/screenshots/popup.png)
 
 ## Installation
 
